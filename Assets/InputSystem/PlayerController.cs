@@ -18,6 +18,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb; // Fixed typo in the variable name
     private bool canWalkThroughWalls;
     private CapsuleCollider capsuleCollider; // Reference to CapsuleCollider
+    [SerializeField]
+    private GameObject throwingBall;
+    [SerializeField]
+    private GameObject throwingPoint;
 
     // Initial positions for reset
     private Vector3 initialPosition;
@@ -56,6 +60,10 @@ public class PlayerController : MonoBehaviour
                 GetComponent<Rigidbody>().excludeLayers |= (1 << LayerMask.NameToLayer("Wall"));
             }
             canWalkThroughWalls = !canWalkThroughWalls;
+        }
+
+        if (input.Shoot) {
+            Shoot();
         }
 
         if (input.Reset)
@@ -132,5 +140,12 @@ public class PlayerController : MonoBehaviour
     public void LockCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void Shoot() {
+        Debug.Log("Shooting");
+        GameObject bullet = Instantiate(throwingBall, throwingPoint.transform.position, transform.rotation);
+        Rigidbody rb = bullet.GetComponent<Rigidbody>();
+        rb.AddForce(transform.forward * 20, ForceMode.Impulse);
     }
 }

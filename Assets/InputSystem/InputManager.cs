@@ -9,7 +9,7 @@ public class InputManager : MonoBehaviour
     public bool Jump => inputActions.Player.Jump.triggered;
     public bool Invisible => inputActions.Player.Invisible.triggered;
     public bool Reset => inputActions.Player.Reset.triggered;
-    // public bool Shoot => inputActions.Player.Shoot.triggered;
+    public bool Shoot => inputActions.Player.Shoot.triggered;
     public Vector2 MouseLook => inputActions.Player.Look.ReadValue<Vector2>();
 
     void Start()
