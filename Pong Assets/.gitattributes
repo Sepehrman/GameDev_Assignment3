@@ -1,0 +1,2 @@
+Logs/AssetImportWorker0-prev.log filter=lfs diff=lfs merge=lfs -text
+*.log filter=lfs diff=lfs merge=lfs -text
