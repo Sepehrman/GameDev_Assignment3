@@ -127,8 +127,9 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Finish")
         {
-            Debug.Log("Hit finish");
             collision.gameObject.SetActive(false);
+        } else if (collision.gameObject.tag == "Enemy") {
+            
         }
     }
 
@@ -143,10 +144,11 @@ public class PlayerController : MonoBehaviour
     }
 
     void Shoot() {
-        Debug.Log("Shooting");
         Vector3 cameraForward = playerCamera.forward;
         GameObject bullet = Instantiate(throwingBall, throwingPoint.transform.position, Quaternion.LookRotation(cameraForward));
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(cameraForward * 20, ForceMode.Impulse);
+        rb.AddForce(cameraForward * 15, ForceMode.Impulse);
     }
+
+
 }

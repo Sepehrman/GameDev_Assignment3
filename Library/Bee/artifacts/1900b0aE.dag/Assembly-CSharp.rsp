@@ -387,6 +387,7 @@
 "Assets/Pong Assets/Assets/Scripts/ScreenTransition.cs"
 "Assets/Scripts/AIAgent.cs"
 "Assets/Scripts/AILocomotion.cs"
+"Assets/Scripts/BallCollisionController.cs"
 "Assets/Scripts/EndMaze.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/Maze Generator.cs"

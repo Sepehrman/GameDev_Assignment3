@@ -179,10 +179,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerNew
       objectReference: {fileID: 0}
+    - target: {fileID: 3309110747579126336, guid: 23e2a506eb4c5b349856b54f157fc9fc, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3568135635574191068, guid: 23e2a506eb4c5b349856b54f157fc9fc, type: 3}
       propertyPath: throwingBall
       value: 
-      objectReference: {fileID: 3372930114503398893, guid: 9fc28518d0360ed40aa207ec40dcaca4, type: 3}
+      objectReference: {fileID: 8947546840781253863, guid: 9fc28518d0360ed40aa207ec40dcaca4, type: 3}
     - target: {fileID: 3568135635574191068, guid: 23e2a506eb4c5b349856b54f157fc9fc, type: 3}
       propertyPath: throwingPoint
       value: 
@@ -190,6 +194,10 @@ PrefabInstance:
     - target: {fileID: 5369593909102884379, guid: 23e2a506eb4c5b349856b54f157fc9fc, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8914375914667352972, guid: 23e2a506eb4c5b349856b54f157fc9fc, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -265,6 +273,29 @@ MonoBehaviour:
   stopWithinDistanceOfWalkpoint: 2
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 20
+--- !u!136 &60566546
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60566538}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.75
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.91, z: 0}
 --- !u!1 &298096991
 GameObject:
   m_ObjectHideFlags: 0
@@ -711,6 +742,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 100016, guid: 2dc7b382d25903545b405802eb2198ab, type: 3}
       insertIndex: -1
       addedObject: {fileID: 60566541}
+    - targetCorrespondingSourceObject: {fileID: 100016, guid: 2dc7b382d25903545b405802eb2198ab, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 60566546}
   m_SourcePrefab: {fileID: 100100000, guid: 2dc7b382d25903545b405802eb2198ab, type: 3}
 --- !u!1 &705507993
 GameObject:
@@ -1690,7 +1724,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1406306805}
   - component: {fileID: 1406306806}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ThrowingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1731,7 +1765,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
