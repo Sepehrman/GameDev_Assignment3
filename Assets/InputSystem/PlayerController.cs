@@ -144,8 +144,9 @@ public class PlayerController : MonoBehaviour
 
     void Shoot() {
         Debug.Log("Shooting");
-        GameObject bullet = Instantiate(throwingBall, throwingPoint.transform.position, transform.rotation);
+        Vector3 cameraForward = playerCamera.forward;
+        GameObject bullet = Instantiate(throwingBall, throwingPoint.transform.position, Quaternion.LookRotation(cameraForward));
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * 20, ForceMode.Impulse);
+        rb.AddForce(cameraForward * 20, ForceMode.Impulse);
     }
 }
