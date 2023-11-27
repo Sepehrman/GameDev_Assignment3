@@ -694,6 +694,7 @@ MonoBehaviour:
   playerBall: {fileID: 774341573}
   endgameUI: {fileID: 1600829045}
   winnerText: {fileID: 796633626}
+  countdownText: {fileID: 992634033}
 --- !u!1 &493775951
 GameObject:
   m_ObjectHideFlags: 0

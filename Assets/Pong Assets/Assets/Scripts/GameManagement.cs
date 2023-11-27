@@ -14,7 +14,7 @@ public class GameManagement : MonoBehaviour
     public TMP_Text winnerText;
     public TMP_Text countdownText;
     private int countdownStart = 3;
-    private int maxPlayerScore = 1;
+    private int maxPlayerScore = 5;
     private bool isRunning = true;
 
     void Start()
