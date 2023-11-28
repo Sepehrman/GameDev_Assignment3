@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     // Initial positions for reset
     private Vector3 initialPosition;
     private Vector3 initialRotation;
-    public GameManager gameManager;
 
     void Start()
     {
@@ -131,8 +130,7 @@ public class PlayerController : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
         } else if (collision.gameObject.tag == "Enemy") {
-            Debug.Log("Die");
-            gameManager.Restart();
+            GameManager.Instance.Restart();
         }
     }
 

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - ThrowingBall
+  - Enemy
   layers:
   - Default
   - TransparentFX

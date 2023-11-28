@@ -32,9 +32,11 @@ public class AIAgent : MonoBehaviour
     private Boolean isDisappeared = false;
     public AudioSource deathSound;
     public AudioSource spawnSound;
+    GameManager gameManager;
 
     void Start()
     {
+        gameManager = GameManager.Instance;
         initialPosition = transform.position;
 
         agentInitialPosition = transform.position;
@@ -78,6 +80,7 @@ public class AIAgent : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "ThrowingBall") {
+            gameManager.AddScore();
             health--;
 
             if (health == 0) {
@@ -149,8 +152,10 @@ public class AIAgent : MonoBehaviour
         foreach (GameObject obj in allGameObjects)
         {
             if (obj.name == "MazeBlock 1(Clone)") {
+                
                 // Vector3 newPosition = new Vector3(obj.transform.position.x, 30, obj.transform.position.z);
                 // obj.transform.position = newPosition;
+
                 gridPositions.Add(obj);
             }
         }
