@@ -27,6 +27,13 @@ public class PlayerController : MonoBehaviour
     private Vector3 initialPosition;
     private Vector3 initialRotation;
 
+
+    //Audio
+    public AudioSource FootStepAudio;
+    public AudioSource WallCollisionAudio;
+    public AudioSource BackgroundMusic;
+    
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Fix the typo in getting the Rigidbody component
@@ -38,10 +45,34 @@ public class PlayerController : MonoBehaviour
 
         initialPosition = transform.position;
         initialRotation = transform.eulerAngles;
+
+
+        //Audio Initialization
+        //FootStep
+        FootStepAudio.loop = true;
+        FootStepAudio.playOnAwake = false;
+        //WallCollision
+        WallCollisionAudio.loop = false;
+        WallCollisionAudio.playOnAwake = false;
+        //BackgroundMusic
+        BackgroundMusic.loop = true;
+        BackgroundMusic.playOnAwake=true;
     }
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if (BackgroundMusic.isPlaying)
+            {
+                BackgroundMusic.Pause();
+            }
+            else
+            {
+                BackgroundMusic.Play();
+            }
+        }
+
         Look();
         Move();
 
@@ -99,10 +130,23 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        Vector3 oldPlayerPosition = transform.position;//Get the current value of player for audioFootSteep comparison
         Vector2 movementInput = input.Move; // Access Move from InputManager
         Vector3 moveDirection = new Vector3(movementInput.x, 0, movementInput.y) * moveSpeed * Time.deltaTime;
         moveDirection = transform.TransformDirection(moveDirection);
         transform.position += moveDirection;
+        //Debug.Log("X: " + transform.position + " " + oldPlayerPosition + "D: " + Vector3.Distance(transform.position, oldPlayerPosition));
+        if(Vector3.Distance(transform.position, oldPlayerPosition) < 0.0001f)
+        {
+            if (FootStepAudio.isPlaying)
+            {
+                FootStepAudio.Pause();
+            }
+        }
+        else if(!FootStepAudio.isPlaying)
+        {
+           FootStepAudio.Play();
+        }
     }
 
     private void OnEnable()
@@ -130,6 +174,15 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Hit finish");
             collision.gameObject.SetActive(false);
         }
+
+        if (LayerMask.NameToLayer("Wall") == collision.gameObject.layer)
+        {
+            if (!WallCollisionAudio.isPlaying)
+            {
+                WallCollisionAudio.Play();
+            }
+        }
+        
     }
 
     public void UnlockCursor()
