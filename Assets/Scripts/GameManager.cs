@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-        Debug.Log("GameManager Ready");
         DontDestroyOnLoad(this.gameObject);
     }
 

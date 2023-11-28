@@ -31,6 +31,7 @@ public class AIAgent : MonoBehaviour
     private Boolean hasBlocks = false;
     private Boolean isDisappeared = false;
     public AudioSource deathSound;
+    public AudioSource spawnSound;
 
     void Start()
     {
@@ -110,6 +111,7 @@ public class AIAgent : MonoBehaviour
         System.Random rnd = new System.Random();
         int position = rnd.Next(gridPositions.Count);
         agentInitialPosition = gridPositions[position].transform.position;
+        spawnSound.Play();
         ResetPosition();
 
     }
