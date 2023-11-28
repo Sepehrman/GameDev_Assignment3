@@ -82,6 +82,7 @@
     <Compile Include="Assets\Pong Assets\Assets\Scripts\ChangeMaterialColour.cs" />
     <Compile Include="Assets\Mini First Person Controller\Scripts\Components\Zoom.cs" />
     <Compile Include="Assets\Pong Assets\Assets\Scripts\ScreenTransition.cs" />
+    <Compile Include="Assets\Scripts\AudioManager.cs" />
     <Compile Include="Assets\Pong Assets\Assets\Scripts\PongController.cs" />
     <Compile Include="Assets\InputSystem\InputManager.cs" />
     <Compile Include="Assets\Pong Assets\Assets\Scripts\GameManagement.cs" />

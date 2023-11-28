@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameManager;  // Reference to self to destroy if needed
 
     public static GameManager Instance { get; private set; }
+    private const float maxDistanceForLowestAudioVolume = 50f;    // Max distance for lowest soundtrack audio
 
     // Start is called before the first frame update
     private void Awake()
@@ -28,8 +29,22 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
         Debug.Log("GameManager Ready");
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
 
+    }
+
+    protected void FixedUpdate()
+    {
+        SetMusicVolumeBasedOnPlayerDistanceFromEnemy();
+    }
+
+    protected void SetMusicVolumeBasedOnPlayerDistanceFromEnemy()
+    {
+        float distanceBetween = Vector3.Distance(enemy.transform.position, player.transform.position);
+        Debug.Log(distanceBetween);
+        float minDistance = Mathf.Min(maxDistanceForLowestAudioVolume, distanceBetween);
+        float musicLevelVolume = -Mathf.Abs(minDistance / maxDistanceForLowestAudioVolume) + 1; // Invert continuous value
+        AudioManager.Instance.setMusicTrackAudioLevel(musicLevelVolume);    // 0-1.0
     }
 
     public void ResetEnemyPosition()

@@ -14,11 +14,13 @@ public class GameManagement : MonoBehaviour
     public TMP_Text winnerText;
     public TMP_Text countdownText;
     private int countdownStart = 3;
-    private int maxPlayerScore = 5;
+    private int maxPlayerScore = 1;
     private bool isRunning = true;
 
     void Start()
     {
+        //ChangeScene("MazeScene");
+
         StartGame();
     }
 
@@ -60,6 +62,7 @@ public class GameManagement : MonoBehaviour
             yield return Countdown(counter - 1);
         } else
         {
+            Time.timeScale = 1;
             ChangeScene("MazeScene");
         }
     }
