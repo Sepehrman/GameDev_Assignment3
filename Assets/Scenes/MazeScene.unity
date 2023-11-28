@@ -203,6 +203,10 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8573266205554472751, guid: 23e2a506eb4c5b349856b54f157fc9fc, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 8914375914667352972, guid: 23e2a506eb4c5b349856b54f157fc9fc, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -1695,7 +1699,7 @@ GameObject:
   - component: {fileID: 1081900223}
   - component: {fileID: 1081900222}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: ScpreUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

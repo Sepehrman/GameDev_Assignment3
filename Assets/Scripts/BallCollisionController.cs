@@ -9,12 +9,10 @@ public class BallCollisionController : MonoBehaviour
     public AudioSource hitSoundEffect;
     Boolean hasPlayedSound = false;
     private MeshRenderer renderer;
-    GameManager gameManager;
 
 
 
     private void Start() {
-        gameManager = GameManager.Instance;
         renderer = GetComponent<MeshRenderer>();
     }
 

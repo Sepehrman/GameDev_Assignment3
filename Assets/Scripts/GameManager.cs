@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public GameObject gameManager;  // Reference to self to destroy if needed
 
     public static GameManager Instance { get; private set; }
-    private int playerScore;
+    private int playerScore = 0;
     public TextMeshProUGUI ScoreText;
 
     // Start is called before the first frame update
@@ -31,12 +31,12 @@ public class GameManager : MonoBehaviour
             Instance = this;
         }
         DontDestroyOnLoad(this.gameObject);
-        playerScore = 0;
     }
 
     public void ResetEnemyPosition()
     {
         enemy.GetComponent<AIAgent>().ResetPosition();
+        playerScore = 0;
     }
 
     public void LockCursor()
@@ -55,8 +55,8 @@ public class GameManager : MonoBehaviour
         //SceneManager.LoadScene(scene.name);
 
         // Get the current scene's build index
+        playerScore = 0;
         int currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
-
         // Load the current scene by its build index
         SceneManager.LoadScene(currentSceneBuildIndex);
     }
@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
     public void AddScore() {
         playerScore++;
         ScoreText.text = "Score: " + playerScore.ToString();
+        Debug.Log("Adding score" + playerScore);
     }
 
 
