@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 
 
@@ -24,6 +26,11 @@ public class AIAgent : MonoBehaviour
     // Initial positions for reset
     private Vector3 agentInitialPosition;
     private Quaternion agentInitialRotation;
+    private int health = 3;
+    private List<GameObject> gridPositions = new List<GameObject>();
+    private Boolean hasBlocks = false;
+    private Boolean isDisappeared = false;
+    public AudioSource deathSound;
 
     void Start()
     {
@@ -31,6 +38,7 @@ public class AIAgent : MonoBehaviour
 
         agentInitialPosition = transform.position;
         agentInitialRotation = transform.rotation;
+
     }
 
     private void Awake()
@@ -46,7 +54,9 @@ public class AIAgent : MonoBehaviour
             walkPointSet = false;   // Find new walkpoint
             ResetPosition();
         }
-        Patroling();
+        if (!isDisappeared) {
+            Patroling();
+        }
     }
 
     private void Patroling()
@@ -61,6 +71,47 @@ public class AIAgent : MonoBehaviour
 
         if (Vector3.Distance(transform.position, walkPoint) < stopWithinDistanceOfWalkpoint)
             walkPointSet = false;
+    }
+
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "ThrowingBall") {
+            health--;
+
+            if (health == 0) {
+                
+                if (!hasBlocks && gridPositions.Count == 0) {
+                    SeparateBlocks();
+                }
+
+                Vector3 disappearPosition = new Vector3(gameObject.transform.position.x, -50, gameObject.transform.position.z);
+                agentInitialPosition = disappearPosition;
+                deathSound.Play();
+                ResetPosition();
+
+                isDisappeared = true;
+                StartCoroutine(DisappearForFive());
+
+            }
+
+        }        
+    }
+
+
+    private IEnumerator DisappearForFive() {
+
+
+        yield return new WaitForSeconds(5);
+
+        health = 3;
+        isDisappeared = false;
+
+        System.Random rnd = new System.Random();
+        int position = rnd.Next(gridPositions.Count);
+        agentInitialPosition = gridPositions[position].transform.position;
+        ResetPosition();
+
     }
 
     private void SearchWalkPoint()
@@ -85,5 +136,22 @@ public class AIAgent : MonoBehaviour
     public void ResetPosition()
     {
         agent.Warp(agentInitialPosition);   // Transform equvilent for NavMeshAgent
+    }
+
+    private void SeparateBlocks() {
+
+        // List<GameObject> grids = new List<GameObject>();
+        Scene currentScene = SceneManager.GetActiveScene();
+        GameObject[] allGameObjects = currentScene.GetRootGameObjects();
+
+        foreach (GameObject obj in allGameObjects)
+        {
+            if (obj.name == "MazeBlock 1(Clone)") {
+                // Vector3 newPosition = new Vector3(obj.transform.position.x, 30, obj.transform.position.z);
+                // obj.transform.position = newPosition;
+                gridPositions.Add(obj);
+            }
+        }
+        hasBlocks = !hasBlocks;
     }
 }

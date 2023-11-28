@@ -22,14 +22,17 @@ public class BallController : MonoBehaviour
     public Vector3 forceDirection = Vector3.forward;
     public float consecutiveCollisionForce = 30f;
     public int consecutiveCollisionThreshold = 5;
+    public AIAgent aIAgent;
 
     void Start()
     {
         initialPosition = gameObject.transform.position;
         Vector3 initialForceDirection = RandomizeDirection();
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(initialForceDirection * ballSpeed, ForceMode.VelocityChange);    
+        rb.AddForce(initialForceDirection * ballSpeed, ForceMode.VelocityChange);
     }
+
+
     
     private void OnTriggerEnter(Collider other) {
         

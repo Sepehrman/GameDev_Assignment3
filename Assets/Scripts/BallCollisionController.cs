@@ -20,7 +20,6 @@ public class BallCollisionController : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        // Debug.Log(other.gameObject.name);
 
         if (!hasPlayedSound) {
             hitSoundEffect.Play();

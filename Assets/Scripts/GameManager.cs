@@ -29,7 +29,6 @@ public class GameManager : MonoBehaviour
         }
         Debug.Log("GameManager Ready");
         DontDestroyOnLoad(this.gameObject);
-
     }
 
     public void ResetEnemyPosition()
@@ -64,4 +63,6 @@ public class GameManager : MonoBehaviour
         Debug.Log("Quit");
         Application.Quit();
     }
+
+
 }
