@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
     }
 
     public void ResetEnemyPosition()
