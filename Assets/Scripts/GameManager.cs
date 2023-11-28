@@ -44,7 +44,13 @@ public class GameManager : MonoBehaviour
         Debug.Log(distanceBetween);
         float minDistance = Mathf.Min(maxDistanceForLowestAudioVolume, distanceBetween);
         float musicLevelVolume = -Mathf.Abs(minDistance / maxDistanceForLowestAudioVolume) + 1; // Invert continuous value
-        AudioManager.Instance.setMusicTrackAudioLevel(musicLevelVolume);    // 0-1.0
+        try
+        {
+            AudioManager.Instance.setMusicTrackAudioLevel(musicLevelVolume);    // 0-1.0
+        } catch
+        {
+            Debug.LogWarning("No Audio Manager");
+        }
     }
 
     public void ResetEnemyPosition()

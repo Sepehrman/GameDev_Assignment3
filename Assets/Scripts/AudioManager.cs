@@ -17,6 +17,7 @@ public class AudioManager : MonoBehaviour
     public bool isFogOn = false;
     public bool isDay = true;
     public bool lastIsDay = true;
+    public bool isMusicPaused = false;
 
     // Start is called before the first frame update
     private void Awake()
@@ -69,6 +70,19 @@ public class AudioManager : MonoBehaviour
     public void setIsFogOn(bool value)
     {
         isFogOn = value;
+    }
+
+    // Toggles music between paused and unpaused
+    public void toggleMusicPause()
+    {
+        if (isMusicPaused)
+        {
+            currentMusicTrack.Play();
+        } else
+        {
+            currentMusicTrack.Pause();
+        }
+        isMusicPaused = !isMusicPaused;
     }
 
     // Set isDay and change music track accordingly

@@ -14,8 +14,10 @@ public class GameManagement : MonoBehaviour
     public TMP_Text winnerText;
     public TMP_Text countdownText;
     private int countdownStart = 3;
-    private int maxPlayerScore = 1;
+    private int maxPlayerScore = 5; // First to x wins
     private bool isRunning = true;
+
+    private string sceneToTransitionTo = "MazeSceneNathan"; // Change this after
 
     void Start()
     {
@@ -67,10 +69,9 @@ public class GameManagement : MonoBehaviour
         }
     }
 
-
     public void ChangeScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneToTransitionTo);
     }
 
 }

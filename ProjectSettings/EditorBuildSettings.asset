@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MazeScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/PongMiniGame.unity
+    guid: 111ad509c74dbd249b5565a9e5987fe3
+  - enabled: 1
+    path: Assets/Scenes/MazeSceneNathan.unity
+    guid: f79ad049745451f4a8501099f94b1bb7
   m_configObjects: {}
