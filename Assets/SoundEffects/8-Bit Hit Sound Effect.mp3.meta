@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 5dd6feffad74ba14eb65e8c28eb5b6c2
+<<<<<<<< HEAD:Assets/SoundEffects/8-Bit Hit Sound Effect.mp3.meta
+guid: efb90398727d823458a4b97358e00f92
+========
+guid: 6b580f021ff8f454b93d5b64a1991191
+>>>>>>>> Nathan_PongAndAudio:Assets/Resources/2AM-PM-Music.mp3.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 7

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 38b2a653574e65c4fa84ff11f0a875c9
+<<<<<<<< HEAD:Assets/SoundEffects/EnemyKill.mp3.meta
+guid: 5eae770d085a3d74fbac22b1b4989e25
+========
+guid: 7430d8447838910408c0d17664de40ee
+>>>>>>>> Nathan_PongAndAudio:Assets/Resources/John_Wick__Chapter_4_Movie_Theme_No_Copyright_Music.mp3.meta
 AudioImporter:
   externalObjects: {}
   serializedVersion: 7

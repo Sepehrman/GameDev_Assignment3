@@ -1,8 +1,15 @@
 fileFormatVersion: 2
-guid: 4251de1cedadcad439d24d2c8f5de5fd
+<<<<<<<< HEAD:Assets/Prefabs/BouncyMaterial.physicMaterial.meta
+guid: dc78e42a8dbef404c851d10e8b1b7e80
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 13400000
+========
+guid: 6b039723dae9f874eb423dc81af43099
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 112000000
+>>>>>>>> Nathan_PongAndAudio:Assets/Scenes/MazeScene/LightingData.asset.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 

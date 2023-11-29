@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: b390793879713d849a17d8b1bfc852ee
+<<<<<<<< HEAD:Assets/SoundEffects.meta
+guid: 769635ce643fc24449917dedb047411e
+========
+guid: 139e87f074f649e4dbf4991d98c31328
+>>>>>>>> Nathan_PongAndAudio:Assets/Scenes/MazeScene.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

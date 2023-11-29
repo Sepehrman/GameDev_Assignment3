@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     public GameObject gameManager;  // Reference to self to destroy if needed
 
     public static GameManager Instance { get; private set; }
+    private const float maxDistanceForLowestAudioVolume = 50f;    // Max distance for lowest soundtrack audio
+
     private int playerScore = 0;
     public TextMeshProUGUI ScoreText;
 
@@ -51,14 +53,11 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        //Scene scene = SceneManager.GetActiveScene();
-        //SceneManager.LoadScene(scene.name);
 
-        // Get the current scene's build index
         playerScore = 0;
         int currentSceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
-        // Load the current scene by its build index
         SceneManager.LoadScene(currentSceneBuildIndex);
+        
     }
 
     public void Quit()
@@ -71,6 +70,26 @@ public class GameManager : MonoBehaviour
         playerScore++;
         ScoreText.text = "Score: " + playerScore.ToString();
         Debug.Log("Adding score" + playerScore);
+    }
+
+    protected void FixedUpdate()
+    {
+        SetMusicVolumeBasedOnPlayerDistanceFromEnemy();
+    }
+
+    protected void SetMusicVolumeBasedOnPlayerDistanceFromEnemy()
+    {
+        float distanceBetween = Vector3.Distance(enemy.transform.position, player.transform.position);
+        Debug.Log(distanceBetween);
+        float minDistance = Mathf.Min(maxDistanceForLowestAudioVolume, distanceBetween);
+        float musicLevelVolume = -Mathf.Abs(minDistance / maxDistanceForLowestAudioVolume) + 1; // Invert continuous value
+        try
+        {
+            AudioManager.Instance.setMusicTrackAudioLevel(musicLevelVolume);    // 0-1.0
+        } catch
+        {
+            Debug.LogWarning("No Audio Manager");
+        }
     }
 
 

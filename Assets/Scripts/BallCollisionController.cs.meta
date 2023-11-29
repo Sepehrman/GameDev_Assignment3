@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: a4e490bdb002c0f43860d22f70026761
+<<<<<<<< HEAD:Assets/Scripts/BallCollisionController.cs.meta
+guid: 43b95bbd90c4e87428444f8cd554efc0
+========
+guid: a821d50e01bf1ae488677f918c64ec9d
+>>>>>>>> Nathan_PongAndAudio:Assets/Scripts/AudioManager.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
