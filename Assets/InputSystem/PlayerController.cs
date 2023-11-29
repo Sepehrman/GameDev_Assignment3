@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     // Initial positions for reset
     private Vector3 initialPosition;
     private Vector3 initialRotation;
+    public AudioSource wallCollisionAudio;
+    public AudioSource footStepAudio;
 
     void Start()
     {
@@ -43,6 +45,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+
         Look();
         Move();
 
@@ -100,10 +103,27 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+
+        Vector3 oldPlayerPosition = transform.position;
         Vector2 movementInput = input.Move; // Access Move from InputManager
         Vector3 moveDirection = new Vector3(movementInput.x, 0, movementInput.y) * moveSpeed * Time.deltaTime;
         moveDirection = transform.TransformDirection(moveDirection);
         transform.position += moveDirection;
+        if (Vector3.Distance(transform.position, oldPlayerPosition) < 0.0001f)
+        {
+            if (footStepAudio.isPlaying)
+            {
+                footStepAudio.Pause();
+            }
+        }
+        else if (!footStepAudio.isPlaying && transform.position.y <= -3.5)
+        {
+            footStepAudio.Play();
+        }
+        else if (footStepAudio.isPlaying && transform.position.y > -3.5)
+        {
+            footStepAudio.Stop();
+        }
     }
 
     private void OnEnable()
@@ -131,6 +151,14 @@ public class PlayerController : MonoBehaviour
             collision.gameObject.SetActive(false);
         } else if (collision.gameObject.tag == "Enemy") {
             GameManager.Instance.Restart();
+        }
+        
+        if (LayerMask.NameToLayer("Wall") == collision.gameObject.layer)
+        {
+            if (!wallCollisionAudio.isPlaying)
+            {
+                wallCollisionAudio.Play();
+            }
         }
     }
 
