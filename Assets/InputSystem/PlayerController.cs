@@ -50,6 +50,11 @@ public class PlayerController : MonoBehaviour
         Move();
 
 
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            AudioManager.Instance.toggleMusicPause();
+        }
+
         // Code for adding/Removing the wall layer
         if (input.Invisible)
         {
