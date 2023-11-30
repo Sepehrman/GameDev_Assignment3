@@ -85,6 +85,18 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SaveLoadManager.slManager.SaveDefaultSlot();
+            Debug.LogWarning("Im O");
+        }
+    
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            SaveLoadManager.slManager.LoadSaveSlot();
+            Debug.LogWarning("Im L");
+        }
     }
 
     void Look()

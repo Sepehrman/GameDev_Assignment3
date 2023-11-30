@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ThrowingBall
   - Enemy
+  - GameManager
   layers:
   - Default
   - TransparentFX

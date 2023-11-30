@@ -20,6 +20,14 @@ public class GameManager : MonoBehaviour
     private int playerScore = 0;
     public TextMeshProUGUI ScoreText;
 
+    public int getplayerscore(){
+        return playerScore;
+    }
+
+    public void setplayerscore(int new_score){
+        playerScore = new_score;
+    }
+
     // Start is called before the first frame update
     private void Awake()
     {
