@@ -17,7 +17,7 @@ public class GameManagement : MonoBehaviour
     private int maxPlayerScore = 5; // First to x wins
     private bool isRunning = true;
 
-    private string sceneToTransitionTo = "MazeScene"; // Change this after
+    private string sceneToTransitionTo = "GameScene"; // Change this after
 
     void Start()
     {
