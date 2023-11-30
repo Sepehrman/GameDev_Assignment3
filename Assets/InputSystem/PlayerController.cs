@@ -89,13 +89,13 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             SaveLoadManager.slManager.SaveDefaultSlot();
-            Debug.LogWarning("Im O");
+            Debug.Log("Save");
         }
     
         if (Input.GetKeyDown(KeyCode.L))
         {
             SaveLoadManager.slManager.LoadSaveSlot();
-            Debug.LogWarning("Im L");
+            Debug.Log("Load");
         }
     }
 

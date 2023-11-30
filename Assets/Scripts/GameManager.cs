@@ -88,7 +88,6 @@ public class GameManager : MonoBehaviour
     protected void SetMusicVolumeBasedOnPlayerDistanceFromEnemy()
     {
         float distanceBetween = Vector3.Distance(enemy.transform.position, player.transform.position);
-        Debug.Log(distanceBetween);
         float minDistance = Mathf.Min(maxDistanceForLowestAudioVolume, distanceBetween);
         float musicLevelVolume = -Mathf.Abs(minDistance / maxDistanceForLowestAudioVolume) + 1; // Invert continuous value
         try

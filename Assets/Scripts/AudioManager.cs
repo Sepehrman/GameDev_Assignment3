@@ -31,7 +31,6 @@ public class AudioManager : MonoBehaviour
         {
             Instance = this;
         }
-        Debug.Log("audioManager Ready");
         currentMusicTrack = dayMusicTrack;
         if (currentMusicTrack)
         {
