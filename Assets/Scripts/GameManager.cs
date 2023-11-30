@@ -43,6 +43,10 @@ public class GameManager : MonoBehaviour
         // DontDestroyOnLoad(this.gameObject);
     }
 
+    void Start(){
+        SaveLoadManager.slManager.LoadSaveSlot();
+    }
+
     public void ResetEnemyPosition()
     {
         enemy.GetComponent<AIAgent>().ResetPosition();

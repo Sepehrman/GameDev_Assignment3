@@ -8,6 +8,7 @@ void OnTriggerEnter(Collider ChangeScene) // can be Collider
 {
     if(ChangeScene.gameObject.CompareTag("Player"))
     {
+        SaveLoadManager.slManager.SaveDefaultSlot();
         Application.LoadLevel("PongMiniGame");
     }
 }

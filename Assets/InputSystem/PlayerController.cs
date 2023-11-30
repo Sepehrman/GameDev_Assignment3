@@ -33,6 +33,9 @@ public class PlayerController : MonoBehaviour
     public GameObject flashLight;
     private bool flashlightToggle = true;
 
+    public bool canEnterDoor = true;
+    private int doorCooldown = 5;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Fix the typo in getting the Rigidbody component
@@ -44,6 +47,8 @@ public class PlayerController : MonoBehaviour
 
         initialPosition = transform.position;
         initialRotation = transform.eulerAngles;
+
+        StartCoroutine(startDoorCooldown());
     }
 
     void Update()
@@ -202,6 +207,23 @@ public class PlayerController : MonoBehaviour
         GameObject bullet = Instantiate(throwingBall, throwingPoint.transform.position, Quaternion.LookRotation(cameraForward));
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.AddForce(cameraForward * 15, ForceMode.Impulse);
+    }
+
+    IEnumerator startDoorCooldown(){
+        canEnterDoor = false;
+        yield return new WaitForSeconds(doorCooldown);
+        canEnterDoor = true;
+    }
+
+    void OnTriggerEnter(Collider ChangeScene) // can be Collider
+    {
+        if(ChangeScene.gameObject.CompareTag("Door"))
+        {
+            if(canEnterDoor){
+            SaveLoadManager.slManager.SaveDefaultSlot();
+            Application.LoadLevel("PongMiniGame");
+            }
+        }
     }
 
 
