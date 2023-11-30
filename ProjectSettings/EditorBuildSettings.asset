@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Pong Assets/Assets/Scenes/SingleplayerScene.unity
     guid: c4f0888272a93fc498432eaa6e5d875c
   - enabled: 1
-    path: Assets/Scenes/MazeScene.unity
+    path: Assets/Scenes/GameScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
     path: Assets/Scenes/PongMiniGame.unity
