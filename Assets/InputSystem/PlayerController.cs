@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject throwingPoint;
 
+    public GameObject flashLight;
+    private bool flashlightToggle = true;
+
     // Initial positions for reset
     private Vector3 initialPosition;
     private Vector3 initialRotation;
@@ -84,6 +87,12 @@ public class PlayerController : MonoBehaviour
         if (input.Jump)
         {
             Jump();
+        }
+
+          if (Input.GetKeyDown(KeyCode.V))
+        {
+            flashlightToggle = !flashlightToggle;
+            flashLight.SetActive(flashlightToggle);
         }
     }
 

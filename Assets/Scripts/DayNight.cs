@@ -19,17 +19,17 @@ public class DayNight : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             // Toggle between day and night on each key press
             ToggleDay();
         }
-        if (Input.GetKeyDown(KeyCode.L))
+        if (Input.GetKeyDown(KeyCode.N))
         {
             // Toggle between day and night on each key press
             ToggleNight();
         }
-           if (Input.GetKeyDown(KeyCode.J))
+           if (Input.GetKeyDown(KeyCode.M))
         {
             // Toggle between day and night on each key press
             fog.ToggleFog();
@@ -41,6 +41,7 @@ public class DayNight : MonoBehaviour
         RenderSettings.skybox.SetFloat("_Exposure", 2f);
         sun.color = Color.yellow;
         sun.intensity = 2f;
+        AudioManager.Instance.setIsDay(true);
     }
 
     void ToggleNight(){
@@ -48,11 +49,6 @@ public class DayNight : MonoBehaviour
         RenderSettings.skybox.SetFloat("_Exposure", 0.2f);
         sun.color = Color.red;
         sun.intensity = 1f;
-    }
-     void ToggleFog(){
-        sky.SetColor("_SkyTint", Color.black);
-        RenderSettings.skybox.SetFloat("_Exposure", 0.2f);
-        sun.color = Color.white;
-        sun.intensity = 0.1f;
+        AudioManager.Instance.setIsDay(false);
     }
 }

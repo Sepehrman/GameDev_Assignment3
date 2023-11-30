@@ -45,9 +45,11 @@ public class Fog : MonoBehaviour {
     public void ToggleFog(){
         if(fogDensity==0){
             fogDensity = oldFogValue;
+            AudioManager.Instance.setIsFogOn(true);
         }else{
             oldFogValue = fogDensity;
             fogDensity = 0;
+            AudioManager.Instance.setIsFogOn(false);
         }
     }
 }
