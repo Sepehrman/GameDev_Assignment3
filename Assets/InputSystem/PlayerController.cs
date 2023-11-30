@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     public AudioSource wallCollisionAudio;
     public AudioSource footStepAudio;
 
+    public GameObject flashLight;
+    private bool flashlightToggle = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>(); // Fix the typo in getting the Rigidbody component
@@ -96,6 +99,11 @@ public class PlayerController : MonoBehaviour
         {
             SaveLoadManager.slManager.LoadSaveSlot();
             Debug.Log("Load");
+        }
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            flashlightToggle = !flashlightToggle;
+            flashLight.SetActive(flashlightToggle);
         }
     }
 
